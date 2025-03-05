@@ -3,32 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>С 8 марта!</title>
+    <title>С праздником 8 Марта!</title>
     <style>
-        /* Общие стили */
+
         body {
-            font-family: 'Pacifico', cursive; /* Красивый рукописный шрифт */
-           background: url('https://i.artfile.ru/2048x1365_749741_[www.ArtFile.ru].jpg') no-repeat center center fixed;
-        background-size: cover;
-        margin: 0;
-        padding: 0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        color: #4a4a4a;
+            font-family: 'Pacifico', cursive;
+            background: url('https://i.artfile.ru/2048x1365_749741_[www.ArtFile.ru].jpg') no-repeat center center fixed;
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: #4a4a4a;
         }
+
         @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
 
-        /* Контейнеры страниц */
         #page1, #page2 {
-            background: rgba(255, 255, 255, 0.9);
-            padding: 30px;
+            background: rgba(255, 255, 255, 0.75);
+            padding: 20px;
             border-radius: 15px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
             text-align: center;
+            width: 90%;
             max-width: 400px;
-            width: 100%;
             transition: opacity 0.5s ease, transform 0.5s ease;
             position: absolute;
             opacity: 0;
@@ -36,22 +36,20 @@
             pointer-events: none;
         }
 
-        /* Активная страница */
         #page1.active, #page2.active {
             opacity: 1;
             transform: translateY(0);
             pointer-events: auto;
         }
 
-        /* Стили для первой страницы */
         #page1 h1 {
             color: #e91e63;
-            font-size: 28px;
-            margin-bottom: 20px;
+            font-size: 24px;
+            margin-bottom: 15px;
         }
 
         #page1 input {
-            width: 80%;
+            width: 90%;
             padding: 10px;
             margin-bottom: 15px;
             border: 2px solid #e91e63;
@@ -87,17 +85,18 @@
             display: none;
         }
 
-        /* Стили для второй страницы */
         #page2 h1 {
             color: #e91e63;
-            font-size: 28px;
-            margin-bottom: 20px;
+            font-size: 24px;
+            margin-bottom: 15px;
         }
 
         #page2 p {
-            font-size: 18px;
+            font-size: 16px;
             line-height: 1.6;
             color: #4a4a4a;
+            opacity: 1; 
+            white-space: normal; 
         }
 
         #page2 button {
@@ -115,9 +114,30 @@
         #page2 button:hover {
             background: #ff6f61;
         }
+
+        /* Адаптация для мобильных устройств */
+        @media (max-width: 480px) {
+            #page1 h1, #page2 h1 {
+                font-size: 20px;
+            }
+
+            #page1 input {
+                font-size: 14px;
+            }
+
+            #page1 button, #page2 button {
+                font-size: 14px;
+                padding: 8px 16px;
+            }
+
+            #page2 p {
+                font-size: 14px;
+            }
+        }
     </style>
 </head>
 <body>
+    <!-- Первая страница -->
     <div id="page1" class="active">
         <h1>С праздником 8 Марта!</h1>
         <input type="text" id="codeInput" placeholder="Введите код">
@@ -125,15 +145,17 @@
         <p id="errorMessage">Неверный код!</p>
     </div>
 
+    <!-- Вторая страница -->
     <div id="page2">
         <h1>Поздравляем!</h1>
-        <p>PODSKAZKA: GO TO AKTOVIY ZAL</p>
+        <p>PODSKAZKA: ZDES' PODSKAZKA</p>
         <button onclick="goBack()">Вернуться</button>
     </div>
 
     <script>
+        // Функция для проверки кода
         function checkCode() {
-            const correctCode = "1234";
+            const correctCode = "1234"; 
             const inputCode = document.getElementById("codeInput").value;
             const errorMessage = document.getElementById("errorMessage");
             const page1 = document.getElementById("page1");
@@ -143,7 +165,7 @@
                 page1.classList.remove("active");
                 setTimeout(() => {
                     page2.classList.add("active");
-                }, 300); 
+                }, 300);
                 errorMessage.style.display = "none";
             } else {
                 errorMessage.style.display = "block";
@@ -157,7 +179,7 @@
             page2.classList.remove("active");
             setTimeout(() => {
                 page1.classList.add("active");
-            }, 300); 
+            }, 300);
             document.getElementById("codeInput").value = "";
         }
     </script>
