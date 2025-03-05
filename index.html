@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>С 8 марта!</title>
+    <style>
+        /* Общие стили */
+        body {
+            font-family: 'Pacifico', cursive; /* Красивый рукописный шрифт */
+           background: url('https://i.artfile.ru/2048x1365_749741_[www.ArtFile.ru].jpg') no-repeat center center fixed;
+        background-size: cover;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        color: #4a4a4a;
+        }
+        @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
+        /* Контейнеры страниц */
+        #page1, #page2 {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+            transition: opacity 0.5s ease, transform 0.5s ease;
+            position: absolute;
+            opacity: 0;
+            transform: translateY(20px);
+            pointer-events: none;
+        }
+
+        /* Активная страница */
+        #page1.active, #page2.active {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+
+        /* Стили для первой страницы */
+        #page1 h1 {
+            color: #e91e63;
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        #page1 input {
+            width: 80%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 2px solid #e91e63;
+            border-radius: 8px;
+            font-size: 16px;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+        #page1 input:focus {
+            border-color: #ff6f61;
+        }
+
+        #page1 button {
+            background: #e91e63;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        #page1 button:hover {
+            background: #ff6f61;
+        }
+
+        #errorMessage {
+            color: #ff0000;
+            font-size: 14px;
+            margin-top: 10px;
+            display: none;
+        }
+
+        /* Стили для второй страницы */
+        #page2 h1 {
+            color: #e91e63;
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        #page2 p {
+            font-size: 18px;
+            line-height: 1.6;
+            color: #4a4a4a;
+        }
+
+        #page2 button {
+            background: #e91e63;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background 0.3s ease;
+        }
+
+        #page2 button:hover {
+            background: #ff6f61;
+        }
+    </style>
+</head>
+<body>
+    <div id="page1" class="active">
+        <h1>С праздником 8 Марта!</h1>
+        <input type="text" id="codeInput" placeholder="Введите код">
+        <button onclick="checkCode()">Проверить</button>
+        <p id="errorMessage">Неверный код!</p>
+    </div>
+
+    <div id="page2">
+        <h1>Поздравляем!</h1>
+        <p>PODSKAZKA: GO TO AKTOVIY ZAL</p>
+        <button onclick="goBack()">Вернуться</button>
+    </div>
+
+    <script>
+        function checkCode() {
+            const correctCode = "1234";
+            const inputCode = document.getElementById("codeInput").value;
+            const errorMessage = document.getElementById("errorMessage");
+            const page1 = document.getElementById("page1");
+            const page2 = document.getElementById("page2");
+
+            if (inputCode === correctCode) {
+                page1.classList.remove("active");
+                setTimeout(() => {
+                    page2.classList.add("active");
+                }, 300); 
+                errorMessage.style.display = "none";
+            } else {
+                errorMessage.style.display = "block";
+            }
+        }
+
+        function goBack() {
+            const page1 = document.getElementById("page1");
+            const page2 = document.getElementById("page2");
+
+            page2.classList.remove("active");
+            setTimeout(() => {
+                page1.classList.add("active");
+            }, 300); 
+            document.getElementById("codeInput").value = "";
+        }
+    </script>
+</body>
+</html>
