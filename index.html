@@ -22,7 +22,7 @@
         @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
 
         #page1, #page2 {
-            background: rgba(255, 255, 255, 0.75);
+            background: rgba(255, 255, 255, 0.85);
             padding: 20px;
             border-radius: 15px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
@@ -139,8 +139,9 @@
 <body>
     <!-- Первая страница -->
     <div id="page1" class="active">
+        <p>designed by igor trishkin</p> 
         <h1>С праздником 8 Марта!</h1>
-        <input type="text" id="codeInput" placeholder="Введите код">
+        <input type="text" id="codeInput" placeholder="Поле для слова (большими буквами)...">
         <button onclick="checkCode()">Проверить</button>
         <p id="errorMessage">Неверный код!</p>
     </div>
@@ -148,14 +149,13 @@
     <!-- Вторая страница -->
     <div id="page2">
         <h1>Поздравляем!</h1>
-        <p>PODSKAZKA: ZDES' PODSKAZKA</p>
+        <p>Всё отгадано верно, время идти в актовый зал. </p>
         <button onclick="goBack()">Вернуться</button>
     </div>
 
     <script>
-        // Функция для проверки кода
-        function checkCode() {
-            const correctCode = "1234"; 
+        function checkCode() { 
+            const correctCode = "MART";
             const inputCode = document.getElementById("codeInput").value;
             const errorMessage = document.getElementById("errorMessage");
             const page1 = document.getElementById("page1");
